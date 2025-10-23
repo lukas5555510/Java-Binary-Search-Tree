@@ -1,3 +1,5 @@
+
+
 public class Main {
     public static void main(String[] args){
         System.out.println("Hello world");
@@ -12,6 +14,11 @@ public class Main {
         bts.insert(14);
         bts.insert(57);
         bts.insert(49);
+
+        bts.inorder();
+
+        bts.deleteNode(20);
+
 
 
         bts.inorder();

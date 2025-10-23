@@ -50,4 +50,42 @@ public class BinarySearchTree {
             inorderRec(root.right);
         }
     }
+
+    public void deleteNode(int value){
+        root = deleteNodeRec(root, value);
+    }
+
+    public Node deleteNodeRec(Node root, int value){
+        if(root == null){
+            return root;
+        }
+
+        if(value > root.value){
+            root.right = deleteNodeRec(root.right,value);
+        } else if (value < root.value) {
+            root.left = deleteNodeRec(root.left, value);
+        }else {
+            //node with only one child or no child
+            if(root.left == null){
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            }
+            //node with 2 children
+
+            root.value = minValue(root.right);
+            root.right = deleteNodeRec(root.right,root.value);
+        }
+            return root;
+    }
+
+    int minValue(Node root){
+        int minv = root.value;
+        while(root.left!=null){
+            minv = root.left.value;
+            root = root.left;
+        }
+        return minv;
+    }
+
 }
