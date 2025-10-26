@@ -16,6 +16,13 @@ public class Main {
         bts.insert(49);
 
         bts.inorder();
+        System.out.println(bts.countNodes());
+        System.out.println(bts.sumValues());
+        System.out.println("height: " + bts.height());
+        System.out.println("max: "+bts.max());
+        System.out.println("min: "+bts.min());
+
+        System.out.println("leaves: "+bts.countLeaves());
 
         bts.deleteNode(20);
 

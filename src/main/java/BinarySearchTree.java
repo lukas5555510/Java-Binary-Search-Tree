@@ -88,4 +88,75 @@ public class BinarySearchTree {
         return minv;
     }
 
+    public int countNodes(){
+        return countNodesRec(root);
+    }
+    int countNodesRec(Node root){
+        if(root == null){
+            return 0;
+        }else{
+            return 1 + countNodesRec(root.left) + countNodesRec(root.right);
+        }
+    }
+
+    public int sumValues(){
+        return sumValuesRec(root);
+    }
+
+    int sumValuesRec(Node root){
+        if (root == null){
+            return 0;
+        }else {
+            return root.value + sumValuesRec(root.right)+ sumValuesRec(root.left);
+        }
+    }
+
+    public int height(){
+        return heightRec(root);
+    }
+
+    int heightRec(Node root){
+        if(root == null){
+            return 0;
+        }else{
+            return 1+Math.max(heightRec(root.left),heightRec(root.right));
+        }
+    }
+
+    public int min(){
+        return minRec(root).value;
+    }
+    public int max(){
+        return maxRec(root).value;
+    }
+
+    Node maxRec(Node root){
+        if(root == null) {
+            return null;
+        }
+        else if(root.right == null){
+            return root;
+        }else
+            return maxRec(root.right);
+    }
+
+    Node minRec(Node root){
+        if(root == null)
+            return null;
+        else if(root.left == null)
+            return root;
+        else
+            return minRec(root.left);
+    }
+
+    public int countLeaves(){
+        return countLeavesRec(root);
+    }
+    int countLeavesRec(Node root){
+        if(root == null)
+            return 0;
+        else if(root.left == null && root.right == null)
+            return 1;
+        else return countLeavesRec(root.left)+countNodesRec(root.right);
+    }
 }
